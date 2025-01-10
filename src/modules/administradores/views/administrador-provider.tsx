@@ -13,7 +13,7 @@ export const AdminProvider = ({ children }: any) => {
   const getCourses = useCallback(async () => {
     try {
       const userRequest = {
-        endpoint: "/cursos",
+        endpoint: `/cursos`,
       };
       const _courses = await fetchData(userRequest);
 
@@ -24,15 +24,14 @@ export const AdminProvider = ({ children }: any) => {
     }
   }, []);
 
-  const searchCourse = useCallback(async (name: any) => {
+  const searchCourse = useCallback(async (name: any, page: number) => {
     try {
       const userRequest = {
-        endpoint: `/cursos?nome=${name}`,
+        endpoint: `/cursos?nome=${name}&page=${page}`,
       };
       const _courses = await fetchData(userRequest);
 
       setCourses(_courses);
-
       return _courses;
     } catch (error) {
       console.error((error as Error).message);
@@ -107,7 +106,7 @@ export const AdminProvider = ({ children }: any) => {
 
       const addedCourse = await fetchData(userRequest);
 
-      setCourses((prevCourses: any) => [...prevCourses, addedCourse]);
+      getCourses();
 
       return addedCourse;
     } catch (error) {
@@ -148,9 +147,7 @@ export const AdminProvider = ({ children }: any) => {
 
       const courseDeleted = await fetchData(userRequest);
 
-      setCourses((prevCourses: any) =>
-        prevCourses.filter((course: any) => course.id !== id)
-      );
+      getCourses();
 
       return courseDeleted;
     } catch (error) {

@@ -1,0 +1,48 @@
+.pagination {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-item,
+.btn-change-page {
+  padding: 8px 12px;
+  border-radius: 5px;
+  background-color: rgba(228, 230, 235, 255);
+  cursor: pointer;
+  color: #3d4451;
+
+  &:hover {
+    background-color: rgba(208, 212, 219, 255);
+  }
+
+  &.active {
+    background-color: rgba(36, 99, 234, 255);
+    color: white;
+  }
+}
+
+.btn-change-page {
+  background-color: rgba(219, 234, 254, 255);
+  color: #1d4fd9;
+
+  &:hover {
+    background-color: rgba(191, 218, 255, 255);
+  }
+}
+
+.btn-change-page.disabled {
+  color: rgba(157, 162, 175, 255);
+  background-color: rgba(243, 244, 246, 255);
+  cursor: auto;
+}
+
+.pagination-numbers {
+  display: flex;
+}
+
+.fa-ellipsis {
+  font-size: 0.9rem;
+  color: #9da2af;
+}
